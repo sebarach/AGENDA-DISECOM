@@ -1,0 +1,27 @@
+.calendar-inner
+{
+    min-height: 100vh !important;
+}
+
+.header
+{
+    height: 80px;
+    background-color: #216583;
+    border-bottom: 3px solid black;
+}
+
+.header img
+{
+    font-size: 50px;
+    background-repeat: no-repeat;
+    height: 55;
+    margin-top: 12px;
+}
+
+.agregarEvento
+{
+    font-size: 35;
+    width: 40px;
+    color: yellow;
+    cursor: pointer;
+}

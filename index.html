@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Agenda Disecom (Centro de Distribución)</title>
+        <link rel="stylesheet" type="text/css" href="css/evo-calendar.css"/>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/evo-calendar.royal-navy.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    </head>
+    <body>
+
+        <div class="header">
+            <img src="Disecom (1).png" alt="">
+        </div>
+
+
+        
+        <div id="calendar"></div>
+
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Agendar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Nombre:</label>
+                      <input type="text" class="form-control" id="nombreEvento">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Descripcion Completa:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="btnCrearEvento" class="btn btn-primary">Registrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="js/evo-calendar.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+
+
+
+            $('#calendar').evoCalendar({
+            'theme': 'Royal Navy'
+});
+
+$('.agregarEvento').on('click', function() {
+
+    $('#exampleModal').modal('show');
+
+   /* $('#calendar').evoCalendar('addCalendarEvent', {
+     id: 'kNybja6',
+     name: 'Mom\'s Birthday',
+     date: newDate,
+     type: 'birthday'
+});*/
+
+
+});
+
+$('#btnCrearEvento').on('click', function() {
+
+var active_date = $('#calendar').evoCalendar('getActiveDate');
+var nombre = $('#nombreEvento').val();
+
+ $('#calendar').evoCalendar('addCalendarEvent', {
+     id: 'kNybja6',
+     name: nombre,
+     date: active_date,
+     type: 'birthday'
+});
+
+alert("Evento Creado Correctamente");
+$('#exampleModal').modal('hide');
+
+});
+
+$('#calendar').on('selectEvent', function(event, activeEvent) {
+         $('#calendar').evoCalendar('removeCalendarEvent',activeEvent.id);
+          console.log(activeEvent);
+});
+
+
+        })
+        </script>
+
+    </body>
+</html>
